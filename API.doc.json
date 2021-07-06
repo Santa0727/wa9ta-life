@@ -1,0 +1,112 @@
+{
+  "name": "API Documentation",
+  "version": "1.0.0",
+  "API": {
+    "baseURL": "http://www.wa9ta.life/api/{language}",
+    "header": {
+      "Accept": "application/json"
+    },
+    "Login": {
+      "url": "auth/login",
+      "type": "POST",
+      "dataType": "json",
+      "data": {
+        "eid": "111-1111-1111111-1",
+        "moblie": "9999999999"
+      },
+      "response": {
+        "success": true,
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC93d3cud2E5dGEubGlmZVwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYyNDQ0NTIwOSwiZXhwIjoxNjI0NTMxNjA5LCJuYmYiOjE2MjQ0NDUyMDksImp0aSI6ImphQ01id2hHamdaNUFabEoiLCJzdWIiOjE1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.dGY4ZvI55GDNTzYIPeB2zqFEjKd0QOFBwlYknIwCktU",
+        "token_type": "bearer",
+        "expires_in": 86400,
+        "user": {
+          "id": 15,
+          "name": "qqq",
+          "profile_photo_path": "upload/avatar/1624418359.png",
+          "eid": "111-1111-1111111-1",
+          "moblie": "1111",
+          "passport": "111111"
+        }
+      },
+      "error": {
+        "400": {
+          "success": false,
+          "errors": {
+            "eid": [
+              "The eid field is required."
+            ],
+            "moblie": [
+              "The moblie field is required."
+            ]
+          }
+        },
+        "401": {
+          "success": false,
+          "message": "These credentials do not match our records."
+        }
+      }
+    },
+    "User list": {
+      "url": "users?token={token}",
+      "type": "GET",
+      "response": {
+        "success": true,
+        "users": [
+          {
+            "id": 14,
+            "name": "Yeli",
+            "eid": "000-0000-0000000-0"
+          },
+          {
+            "id": 15,
+            "name": "qqq",
+            "eid": "111-1111-1111111-1"
+          }
+        ]
+      }
+    },
+    "User Info": {
+      "url": "users/{user.id}?token={token}",
+      "type": "GET",
+      "response": {
+        "success": true,
+        "user": {
+          "id": 14,
+          "profile_photo_path": null,
+          "name": "Yeli",
+          "eid": "000-0000-0000000-0",
+          "reports": [
+            {
+              "id": 16,
+              "user_id": 14,
+              "type": 1,
+              "start_date": "2021-06-22",
+              "end_date": "2021-06-23",
+              "start_time": "22:00:20",
+              "valid_hours": 1,
+              "created_at": "2021-06-22T22:00:33.000000Z",
+              "updated_at": "2021-06-22T22:00:37.000000Z"
+            }
+          ]
+        }
+      }
+    },
+    "User Last Report": {
+      "url": "report/last/{user_id}?token={token}",
+      "type": "GET",
+      "response": {
+        "success": true,
+        "lastReport": {
+          "id": 14,
+          "name": "Yeli",
+          "eid": "000-0000-0000000-0",
+          "passport": "000",
+          "profile_photo_path": null,
+          "start_date": "2021-06-22",
+          "start_time": "22:00:20",
+          "valid_hours": 1
+        }
+      }
+    }
+  }
+}
